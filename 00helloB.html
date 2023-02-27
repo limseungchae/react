@@ -7,18 +7,27 @@
 <body>
     <div id="app"></div>
 
-    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="js/vendor/react/react@16.14.dev.js"></script>
+    <script src="js/vendor/react/react-dom@16.14.dev.js"></script>
+    <script src="js/vendor/babel.min.js"></script>
 
     <script type="text/babel">
-        const { Fragment } = React;
+        const { Fragment, useState } = React;
         const App = () => { // UI를 컴퍼넌트로 정의
+            // const [변수명, setXxx] = useState(초기값)
+            const [p1text, setP1text] = useState('Just React');
+            const [p2text, setP2text] = useState('2022');
+
+            const changeContent = () => {
+                setP1text('Welcome to react world!!');
+                setP2text('Since 2013');
+            };
+
             return ( // UI 리턴시 하나의 요소만 가능!
                 <Fragment>
-                    <p id="p1" style={{color: 'red'}}>Just React</p>
-                    <p id="p2" style={{color: 'blue'}}>2022</p>
-                    <button>Change Content</button>
+                    <p id="p1" style={{color: 'red'}}>{p1text}</p>
+                    <p id="p2" style={{color: 'blue'}}>{p2text}</p>
+                    <button onClick={changeContent}>Change Content</button>
                 </Fragment>   // 속성값은 문자열로
             );
         };
